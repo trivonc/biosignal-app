@@ -6,7 +6,7 @@ from scipy.signal import find_peaks, butter, filtfilt
 
 st.set_page_config(page_title="BME Signal Visualiser", layout="wide")
 
-st.title("⚡ Biomedical Signal Visualiser & Analyzer")
+st.title("Biomedical Signal Visualiser & Analyzer")
 st.write("Analyze ECG/EMG recordings, calculate peak statistics, and filter signal noise.")
 
 # Sidebar controls
@@ -91,7 +91,7 @@ if df is not None:
         bpm = 0.0
         
     # Display BME Metrics Cards
-    st.subheader("📊 Signal Metrics Overview")
+    st.subheader("Signal Metrics Overview")
     m1, m2, m3, m4, m5 = st.columns(5)
     
     m1.metric("Highest Recording", f"{max_val:.2f} mV")
@@ -101,7 +101,7 @@ if df is not None:
     m5.metric("Total Peaks", len(peaks))
 
     # Plot Interactive Chart
-    st.subheader("📈 Signal Waveform Plot")
+    st.subheader("Signal Waveform Plot")
     x_axis = df[time_col] if time_col else df.index
     
     fig = px.line(df, x=x_axis, y=active_col, title=f"Visualizing: {active_col}")
@@ -119,5 +119,5 @@ if df is not None:
     fig.update_layout(template="plotly_dark", hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
-    with st.expander("🔍 View Raw Data Table"):
+    with st.expander("View Raw Data Table"):
         st.dataframe(df)
